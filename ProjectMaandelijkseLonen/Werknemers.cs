@@ -59,7 +59,7 @@ namespace ProjectMaandelijkseLonen
         {
             double sixExtra;
             double StartMoney;
-            if (Work.ToString() == "ITSupport")
+            if (Work.ToString() == "ITsupport")
             {
                 sixExtra = Startloon * 0.06;
                 Startloon = Startloon - sixExtra;
@@ -76,7 +76,7 @@ namespace ProjectMaandelijkseLonen
         {
             int dientsJaar = DateTime.Now.Year - StartTime.Year;
             double loonMetAncEnSoc = StartMoney();
-            if (Work.ToString() == "ITSupport")
+            if (Work.ToString() == "ITsupport")
             {
                 for (int i = 0; i < dientsJaar; i++)
                 {
@@ -117,7 +117,7 @@ namespace ProjectMaandelijkseLonen
                 netto = money - (money * 0.1368) + 50;
                 return Math.Round(netto, 2);
             }
-            else if (Work.ToString() == "CustomerSupport")
+            else if (Work.ToString() == "Customersupport")
             {
                 money = GeneretAncientSocial();
                 netto = money - (money * 0.1368) +19.50;
