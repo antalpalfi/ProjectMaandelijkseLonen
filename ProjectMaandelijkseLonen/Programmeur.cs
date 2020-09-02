@@ -8,17 +8,12 @@ namespace ProjectMaandelijkseLonen
 {
     public class Programmeur : Werknemers
     {
-        public bool BedrijfWagen { get; set; }
-        public Programmeur(string naam, string geslacht, DateTime startTime, string iban, DateTime geboortDatum, string rijksRegNum, double startloon = 2200, Funkcie work = Funkcie.Programmeur, bool bedrijfWagen = true, int uuren = 38, ConractType conractType = ConractType.Voltijds) : base(naam,geslacht, startTime, iban, geboortDatum, rijksRegNum,startloon, work, uuren, conractType)
+        //public bool BedrijfWagen { get; set; }
+        public Programmeur(string naam, string geslacht, DateTime startTime, string iban, DateTime geboortDatum, string rijksRegNum, double startloon = 2200, Funkcie work = Funkcie.Programmeur, int uuren = 38, ConractType conractType = ConractType.Voltijds, bool bedrijfWagen=false) : base(naam,geslacht, startTime, iban, geboortDatum, rijksRegNum,startloon, work, uuren, conractType, bedrijfWagen)
         {
-            BedrijfWagen = bedrijfWagen;
-            //BedrijfsVoorheffing = (bedrijfWagen == true ? 17.30 : 13.68);
+            //BedrijfWagen = bedrijfWagen;
+            
         }
-        public double ProgNetto()
-        {
-            double money = GeneretAncientSocial();
-            double netto = money - (money * 0.1730);
-            return Math.Round(netto, 2);
-        }
+       
     }
 }
