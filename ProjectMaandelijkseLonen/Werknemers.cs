@@ -59,11 +59,12 @@ namespace ProjectMaandelijkseLonen
         {
             double sixExtra;
             double StartMoney;
+            double itStartLoon = Startloon;
             if (Work.ToString() == "ITsupport")
             {
                 sixExtra = Startloon * 0.06;
-                Startloon = Startloon - sixExtra;
-                StartMoney = Uuren / 38 * Startloon;
+                itStartLoon = Startloon - sixExtra;
+                StartMoney = Uuren / 38 * itStartLoon;
                 SixExtra = sixExtra;
                 return Math.Round(StartMoney, 2);
             }
