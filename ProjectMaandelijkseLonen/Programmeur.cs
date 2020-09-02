@@ -9,10 +9,10 @@ namespace ProjectMaandelijkseLonen
     public class Programmeur : Werknemers
     {
         public bool BedrijfWagen { get; set; }
-        public Programmeur(string naam, DateTime startTime, string iban, DateTime geboortDatum, string rijksRegNum, double netto, double startloon = 2200, Funkcie work = Funkcie.Programmeur, bool bedrijfWagen = true, int uuren = 38, ConractType conractType = ConractType.Voltijds) : base(naam, startTime, iban, geboortDatum, rijksRegNum, netto, startloon, work, uuren, conractType)
+        public Programmeur(string naam, string geslacht, DateTime startTime, string iban, DateTime geboortDatum, string rijksRegNum, double startloon = 2200, Funkcie work = Funkcie.Programmeur, bool bedrijfWagen = true, int uuren = 38, ConractType conractType = ConractType.Voltijds) : base(naam,geslacht, startTime, iban, geboortDatum, rijksRegNum,startloon, work, uuren, conractType)
         {
             BedrijfWagen = bedrijfWagen;
-            BedrijfsVoorheffing = (bedrijfWagen == true ? 17.30 : 13.68);
+            //BedrijfsVoorheffing = (bedrijfWagen == true ? 17.30 : 13.68);
         }
         public double ProgNetto()
         {
