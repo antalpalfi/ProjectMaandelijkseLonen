@@ -133,6 +133,7 @@ namespace ProjectMaandelijkseLonen
                    $"Datum indiensttreding: {StartTime:dd/MM/yyyy}\n" +
                    $"Functie: {Work}\n" +
                    $"Aantal uren: {Uuren}\n" +
+                   $"Contract: {TypeOfContract}\n"+
                    $"Startloon: {Startloon}$\n" +
                    $"Nettoloon: {Netto}$\n";
         }

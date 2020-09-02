@@ -57,9 +57,14 @@
             this.label11 = new System.Windows.Forms.Label();
             this.txtIban = new System.Windows.Forms.TextBox();
             this.IbibanNummer = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.groupBoxContract = new System.Windows.Forms.GroupBox();
+            this.rdbVoltijds = new System.Windows.Forms.RadioButton();
+            this.rdbDeeltijds = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUur)).BeginInit();
             this.groupBoxWagen.SuspendLayout();
+            this.groupBoxContract.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -124,7 +129,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 303);
+            this.label6.Location = new System.Drawing.Point(10, 365);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(71, 13);
             this.label6.TabIndex = 6;
@@ -229,7 +234,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 276);
+            this.label4.Location = new System.Drawing.Point(10, 308);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 13);
             this.label4.TabIndex = 8;
@@ -238,7 +243,7 @@
             // labelStartLoon
             // 
             this.labelStartLoon.AutoSize = true;
-            this.labelStartLoon.Location = new System.Drawing.Point(136, 276);
+            this.labelStartLoon.Location = new System.Drawing.Point(136, 308);
             this.labelStartLoon.Name = "labelStartLoon";
             this.labelStartLoon.Size = new System.Drawing.Size(41, 13);
             this.labelStartLoon.TabIndex = 17;
@@ -248,7 +253,7 @@
             // 
             this.groupBoxWagen.Controls.Add(this.rdbNo);
             this.groupBoxWagen.Controls.Add(this.rdbJa);
-            this.groupBoxWagen.Location = new System.Drawing.Point(136, 303);
+            this.groupBoxWagen.Location = new System.Drawing.Point(136, 356);
             this.groupBoxWagen.Name = "groupBoxWagen";
             this.groupBoxWagen.Size = new System.Drawing.Size(200, 43);
             this.groupBoxWagen.TabIndex = 18;
@@ -280,7 +285,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(136, 368);
+            this.btnAdd.Location = new System.Drawing.Point(136, 415);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 19;
@@ -290,7 +295,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(261, 368);
+            this.btnCancel.Location = new System.Drawing.Point(261, 415);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 20;
@@ -332,11 +337,54 @@
             this.IbibanNummer.TabIndex = 24;
             this.IbibanNummer.Text = "Iban nummer";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(10, 268);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(44, 13);
+            this.label12.TabIndex = 26;
+            this.label12.Text = "Conract";
+            // 
+            // groupBoxContract
+            // 
+            this.groupBoxContract.Controls.Add(this.rdbDeeltijds);
+            this.groupBoxContract.Controls.Add(this.rdbVoltijds);
+            this.groupBoxContract.Location = new System.Drawing.Point(136, 265);
+            this.groupBoxContract.Name = "groupBoxContract";
+            this.groupBoxContract.Size = new System.Drawing.Size(200, 39);
+            this.groupBoxContract.TabIndex = 27;
+            this.groupBoxContract.TabStop = false;
+            // 
+            // rdbVoltijds
+            // 
+            this.rdbVoltijds.AutoSize = true;
+            this.rdbVoltijds.Location = new System.Drawing.Point(3, 16);
+            this.rdbVoltijds.Name = "rdbVoltijds";
+            this.rdbVoltijds.Size = new System.Drawing.Size(58, 17);
+            this.rdbVoltijds.TabIndex = 0;
+            this.rdbVoltijds.TabStop = true;
+            this.rdbVoltijds.Text = "Voltijds";
+            this.rdbVoltijds.UseVisualStyleBackColor = true;
+            // 
+            // rdbDeeltijds
+            // 
+            this.rdbDeeltijds.AutoSize = true;
+            this.rdbDeeltijds.Location = new System.Drawing.Point(89, 16);
+            this.rdbDeeltijds.Name = "rdbDeeltijds";
+            this.rdbDeeltijds.Size = new System.Drawing.Size(65, 17);
+            this.rdbDeeltijds.TabIndex = 1;
+            this.rdbDeeltijds.TabStop = true;
+            this.rdbDeeltijds.Text = "Deeltijds";
+            this.rdbDeeltijds.UseVisualStyleBackColor = true;
+            // 
             // AddWerknemer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(461, 450);
+            this.Controls.Add(this.groupBoxContract);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.IbibanNummer);
             this.Controls.Add(this.txtIban);
             this.Controls.Add(this.label11);
@@ -370,6 +418,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUur)).EndInit();
             this.groupBoxWagen.ResumeLayout(false);
             this.groupBoxWagen.PerformLayout();
+            this.groupBoxContract.ResumeLayout(false);
+            this.groupBoxContract.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -406,5 +456,9 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtIban;
         private System.Windows.Forms.Label IbibanNummer;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.GroupBox groupBoxContract;
+        private System.Windows.Forms.RadioButton rdbDeeltijds;
+        private System.Windows.Forms.RadioButton rdbVoltijds;
     }
 }
