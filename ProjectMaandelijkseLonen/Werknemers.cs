@@ -20,12 +20,10 @@ namespace ProjectMaandelijkseLonen
         public string Geslagh { get; set; }
         public double SixExtra { get; set; }
 
-        //public double BedrijfsVoorheffing = 13.68;
-
        
         public enum Funkcie
         {
-            Baliemedewerker,Programmeur,Support,ITsupport,Customersupport
+            Standaardwerker,Programmeur,Support,ITsupport,Customersupport
         }
         public Funkcie Work;
         public enum ConractType
@@ -37,9 +35,8 @@ namespace ProjectMaandelijkseLonen
         {
 
         }
-
        
-        public Werknemers(string naam, string geslacht,DateTime startTime,string iban,DateTime geboortDatum,string rijksRegNum,double startloon = 1900,Funkcie work = Funkcie.Baliemedewerker, int uuren = 38, ConractType conractType = ConractType.Voltijds,bool bedrijfWagen =false)
+        public Werknemers(string naam, string geslacht,DateTime startTime,string iban,DateTime geboortDatum,string rijksRegNum,double startloon = 1900,Funkcie work = Funkcie.Standaardwerker, int uuren = 38, ConractType conractType = ConractType.Voltijds,bool bedrijfWagen =false)
         {
             Naam = naam;
             Geslagh = geslacht;
@@ -96,12 +93,6 @@ namespace ProjectMaandelijkseLonen
             return Math.Round(loonMetAncEnSoc, 2);
 
         }
-        //public   double NettoLoon()
-        //{
-        //    double money = GeneretAncientSocial();
-        //    double netto = money - (money * 0.1368);
-        //    return Math.Round(netto, 2);
-        //}
         public double NettoLoon()
         {
             double money;
@@ -142,8 +133,8 @@ namespace ProjectMaandelijkseLonen
                    $"Datum indiensttreding: {StartTime:dd/MM/yyyy}\n" +
                    $"Functie: {Work}\n" +
                    $"Aantal uren: {Uuren}\n" +
-                   $"Startloon: {Startloon}\n" +
-                   $"Nettoloon: {Netto}\n";
+                   $"Startloon: {Startloon}$\n" +
+                   $"Nettoloon: {Netto}$\n";
         }
 
         public override string ToString()

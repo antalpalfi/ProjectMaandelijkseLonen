@@ -20,9 +20,9 @@ namespace ProjectMaandelijkseLonen
         //Werknemers getWerk = new Werknemers();
         private void Form1_Load(object sender, EventArgs e)
         {
-            Werknemers antal = new Werknemers("Antal Palfi","Man", new DateTime(2018,06,13), "Be 1235 1532 1654", new DateTime(1990,06,16), "164598-184-16-06-1990",1900,work: Werknemers.Funkcie.Baliemedewerker, 38, conractType: Werknemers.ConractType.Deeltijds);
+            Werknemers antal = new Werknemers("Antal Palfi","Man", new DateTime(2018,06,13), "Be 1235 1532 1654", new DateTime(1990,06,16), "164598-184-16-06-1990",1900,work: Werknemers.Funkcie.Standaardwerker, 38, conractType: Werknemers.ConractType.Deeltijds);
             werknemersList.Add(antal);
-            Werknemers tomi = new Werknemers("Tomi Palfi","Man" ,new DateTime(2015, 06, 13), "Be 1235 1532 1654", new DateTime(1995, 07, 26), "168898-184-26-07-1995",2200,work:Werknemers.Funkcie.Programmeur ,30, conractType: Werknemers.ConractType.Voltijds,true);
+            Werknemers tomi = new Werknemers("Tomi Palfi","Man" ,new DateTime(2015, 06, 13), "Be 1235 1532 1654", new DateTime(1995, 07, 26), "168898-184-26-07-1995",2200,work:Werknemers.Funkcie.Programmeur ,38, conractType: Werknemers.ConractType.Voltijds,true);
             werknemersList.Add(tomi);
             Werknemers eszti = new Werknemers("Eszter Boer", "Vrouw", new DateTime(2008, 01, 23), "NL 1235 1532 7854", new DateTime(1978, 04, 11), "168898-184-11-04-1978", 2050, work: Werknemers.Funkcie.Support, 38, conractType: Werknemers.ConractType.Voltijds);
             werknemersList.Add(eszti);
@@ -46,16 +46,28 @@ namespace ProjectMaandelijkseLonen
             {
                 label1.Text = "";
             }
-            
-           
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            werknemersList.RemoveAt(listBox1.SelectedIndex);
-            listBox1.Items.Remove(listBox1.SelectedIndex);
-            listBox1.DataSource = null;
-            listBox1.DataSource = werknemersList;
+           
+                werknemersList.RemoveAt(listBox1.SelectedIndex);
+                listBox1.Items.Remove(listBox1.SelectedIndex);
+                listBox1.DataSource = null;
+                listBox1.DataSource = werknemersList;
+           
+           
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            AddWerknemer addWerknemer = new AddWerknemer();
+            if (addWerknemer.ShowDialog()== DialogResult.OK)
+            {
+                werknemersList.Add(addWerknemer.newWerknemer);
+                listBox1.DataSource = null;
+                listBox1.DataSource = werknemersList;
+            }
         }
     }
 }
