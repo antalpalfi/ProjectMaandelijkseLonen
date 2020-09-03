@@ -81,6 +81,7 @@
             this.lbLoonbrief.TabIndex = 4;
             this.lbLoonbrief.Text = "klik";
             this.lbLoonbrief.UseVisualStyleBackColor = true;
+            this.lbLoonbrief.Click += new System.EventHandler(this.lbLoonbrief_Click);
             // 
             // Form1
             // 

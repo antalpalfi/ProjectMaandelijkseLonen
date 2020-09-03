@@ -55,8 +55,6 @@ namespace ProjectMaandelijkseLonen
                 listBox1.Items.Remove(listBox1.SelectedIndex);
                 listBox1.DataSource = null;
                 listBox1.DataSource = werknemersList;
-           
-           
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -68,6 +66,11 @@ namespace ProjectMaandelijkseLonen
                 listBox1.DataSource = null;
                 listBox1.DataSource = werknemersList;
             }
+        }
+
+        private void lbLoonbrief_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

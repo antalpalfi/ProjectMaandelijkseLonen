@@ -80,25 +80,53 @@ namespace ProjectMaandelijkseLonen
                 case Werknemers.Funkcie.Programmeur:
                     if (rdbMan.Checked && rdbJa.Checked && rdbVoltijds.Checked)
                     {
-                        
+
                         newWerknemer.Geslagh = "Man";
                         newWerknemer.BedrijfWagen = true;
                         newWerknemer.TypeOfContract = Werknemers.ConractType.Voltijds;
                     }
-                    else if (rdbMan.Checked && rdbNo.Checked)
+                    else if (rdbMan.Checked && rdbJa.Checked && rdbDeeltijds.Checked)
+                    {
+                        newWerknemer.Geslagh = "Man";
+                        newWerknemer.BedrijfWagen = true;
+                        newWerknemer.TypeOfContract = Werknemers.ConractType.Deeltijds;
+                    }
+                    else if (rdbMan.Checked && rdbNo.Checked && rdbDeeltijds.Checked)
                     {
                         newWerknemer.Geslagh = "Man";
                         newWerknemer.BedrijfWagen = false;
+                        newWerknemer.TypeOfContract = Werknemers.ConractType.Deeltijds;
                     }
-                    else if (rdbVrouw.Checked && rdbJa.Checked)
+                    else if (rdbMan.Checked && rdbNo.Checked && rdbVoltijds.Checked)
+                    {
+                        newWerknemer.Geslagh = "Man";
+                        newWerknemer.BedrijfWagen = false;
+                        newWerknemer.TypeOfContract = Werknemers.ConractType.Voltijds;
+                    }
+
+                    else if (rdbVrouw.Checked && rdbJa.Checked && rdbVoltijds.Checked)
+                    {
+                        newWerknemer.Geslagh = "Vrouw";
+                        newWerknemer.BedrijfWagen = true; 
+                        newWerknemer.TypeOfContract = Werknemers.ConractType.Voltijds;
+                    }
+                    else if (rdbVrouw.Checked && rdbJa.Checked && rdbDeeltijds.Checked)
                     {
                         newWerknemer.Geslagh = "Vrouw";
                         newWerknemer.BedrijfWagen = true;
+                        newWerknemer.TypeOfContract = Werknemers.ConractType.Deeltijds;
+                    }
+                    else if (rdbVrouw.Checked && rdbNo.Checked && rdbVoltijds.Checked)
+                    {
+                        newWerknemer.Geslagh = "Vrouw";
+                        newWerknemer.BedrijfWagen = false;
+                        newWerknemer.TypeOfContract = Werknemers.ConractType.Voltijds;
                     }
                     else
                     {
                         newWerknemer.Geslagh = "Vrouw";
                         newWerknemer.BedrijfWagen = false;
+                        newWerknemer.TypeOfContract = Werknemers.ConractType.Deeltijds;
                     }
                     newWerknemer.Naam = txtNaam.Text;
                     newWerknemer.RijkRegNum = txtrijkreg.Text;
