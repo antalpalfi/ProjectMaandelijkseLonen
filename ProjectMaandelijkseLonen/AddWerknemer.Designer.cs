@@ -53,7 +53,6 @@
             this.rdbJa = new System.Windows.Forms.RadioButton();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.txtIban = new System.Windows.Forms.TextBox();
             this.IbibanNummer = new System.Windows.Forms.Label();
@@ -246,9 +245,8 @@
             this.labelStartLoon.AutoSize = true;
             this.labelStartLoon.Location = new System.Drawing.Point(136, 308);
             this.labelStartLoon.Name = "labelStartLoon";
-            this.labelStartLoon.Size = new System.Drawing.Size(41, 13);
+            this.labelStartLoon.Size = new System.Drawing.Size(0, 13);
             this.labelStartLoon.TabIndex = 17;
-            this.labelStartLoon.Text = "label10";
             // 
             // groupBoxWagen
             // 
@@ -304,15 +302,6 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(351, 67);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(95, 13);
-            this.label10.TabIndex = 21;
-            this.label10.Text = "(xxxxxx-MM-YYYY)";
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -367,6 +356,7 @@
             this.rdbDeeltijds.TabStop = true;
             this.rdbDeeltijds.Text = "Deeltijds";
             this.rdbDeeltijds.UseVisualStyleBackColor = true;
+            this.rdbDeeltijds.CheckedChanged += new System.EventHandler(this.rdbDeeltijds_CheckedChanged);
             // 
             // rdbVoltijds
             // 
@@ -378,6 +368,7 @@
             this.rdbVoltijds.TabStop = true;
             this.rdbVoltijds.Text = "Voltijds";
             this.rdbVoltijds.UseVisualStyleBackColor = true;
+            this.rdbVoltijds.CheckedChanged += new System.EventHandler(this.rdbVoltijds_CheckedChanged);
             // 
             // AddWerknemer
             // 
@@ -389,7 +380,6 @@
             this.Controls.Add(this.IbibanNummer);
             this.Controls.Add(this.txtIban);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.groupBoxWagen);
@@ -412,6 +402,7 @@
             this.Controls.Add(this.lblNaam);
             this.Controls.Add(this.label1);
             this.Name = "AddWerknemer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddWerknemer";
             this.Load += new System.EventHandler(this.AddWerknemer_Load);
             this.groupBox1.ResumeLayout(false);
@@ -453,7 +444,6 @@
         private System.Windows.Forms.RadioButton rdbJa;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtIban;
         private System.Windows.Forms.Label IbibanNummer;

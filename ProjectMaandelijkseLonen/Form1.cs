@@ -35,7 +35,8 @@ namespace ProjectMaandelijkseLonen
             }
             else
             {
-                label1.Text = "We don't have any workers";
+                label1.Text = "Time To Play\n" +
+                    "Have a Nice weekend";
             }
         }
 
@@ -48,10 +49,12 @@ namespace ProjectMaandelijkseLonen
             listBox1.DataSource = null;
             listBox1.DataSource = werknemersList;
             listBox1.Focus();
-            if (werknemersList.Count ==0)
+            if (werknemersList.Count == 0)
             {
-                MessageBox.Show("We don't have any workers");
+                MessageBox.Show("We don't have any workers", "AAaaaaaaa", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 btnRemove.Enabled = false;
+                btnLoonBrief.Enabled = false;
+                btnRecap.Enabled = false;
             }
         }
 
@@ -63,6 +66,18 @@ namespace ProjectMaandelijkseLonen
                 werknemersList.Add(addWerknemer.newWerknemer);
                 listBox1.DataSource = null;
                 listBox1.DataSource = werknemersList;
+            }
+            if (werknemersList.Count == 0)
+            {
+                btnRemove.Enabled = false;
+                btnLoonBrief.Enabled = false;
+                btnRecap.Enabled = false;
+            }
+            else
+            {
+                btnRemove.Enabled = true;
+                btnLoonBrief.Enabled = true;
+                btnRecap.Enabled = true;
             }
         }
 
@@ -131,6 +146,18 @@ namespace ProjectMaandelijkseLonen
 
                 }
             }
+        }
+
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            double sumNett = 0;
+            foreach (Werknemers item in werknemersList)
+            {
+                sumNett += item.Netto;
+            }
+            MessageBox.Show($"Deze maand wij heben total netto ${sumNett} betaald");
         }
     }
 }

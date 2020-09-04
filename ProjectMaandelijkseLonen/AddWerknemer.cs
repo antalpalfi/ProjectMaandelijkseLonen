@@ -229,33 +229,37 @@ namespace ProjectMaandelijkseLonen
         {
             if (txtNaam.Text == "" || txtrijkreg.Text == "" || txtIban.Text == "")
             {
-                MessageBox.Show("Uups. Something Missing!! Please fill in all fields");
+                MessageBox.Show("Uups. Something Missing!! Please fill in all fields", "Error!",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             else if (DateTime.Now.Year - dateTimeGebort.Value.Year < 18)
             {
-                MessageBox.Show("Sorry. Under age of 18 cannot work");
+                MessageBox.Show("Sorry. Under age of 18 cannot work","Error!",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if (DateTime.Now.Year - dateTimeGebort.Value.Year >= 68)
+            {
+                MessageBox.Show("Sorry. No place for pension people", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (rdbMan.Checked != true && rdbVrouw.Checked != true)
             {
-                MessageBox.Show("Geslacht niet correct");
+                MessageBox.Show("Geslacht niet correct", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (cmbFunkcie.SelectedItem== null)
             {
-                MessageBox.Show("Funkcie nog niet geselecteerd");
+                MessageBox.Show("Funkcie nog niet geselecteerd", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else if (numUur.Value == 0)
             {
-                MessageBox.Show("Aantal gepresteerde uren niet duidelijk");
+                MessageBox.Show("Aantal gepresteerde uren niet duidelijk", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                MessageBox.Show("Proficiat");
+                MessageBox.Show($"New employee {(newWerknemer as Werknemers).Naam}");
                 DialogResult = DialogResult.OK;
             }
         }
         private void CheckAlles()
         {
-            if (txtNaam.Text != "" && txtIban.Text != "" && txtIban.Text != "" && rdbMan.Checked == true && rdbVrouw.Checked == true && numUur.Value != 0 && DateTime.Now.Year - dateTimeGebort.Value.Year >= 18&& cmbFunkcie.SelectedItem != null)
+            if (txtNaam.Text != "" && txtIban.Text != "" && txtIban.Text != "" && rdbMan.Checked == true && rdbVrouw.Checked == true && numUur.Value != 0 && DateTime.Now.Year - dateTimeGebort.Value.Year >= 18&& cmbFunkcie.SelectedItem != null&& DateTime.Now.Year - dateTimeGebort.Value.Year < 68)
             {
                 DialogResult = DialogResult.OK;
             }
@@ -343,8 +347,31 @@ namespace ProjectMaandelijkseLonen
                 rdbVoltijds.Enabled = true;
                 rdbDeeltijds.Checked = false;
                 rdbVoltijds.Checked = true;
-                rdbDeeltijds.Enabled = false;
+                //rdbDeeltijds.Enabled = false;
+                
             }
+        }
+
+        private void rdbVoltijds_CheckedChanged(object sender, EventArgs e)
+        {
+            numUur.Value = 38;
+            numUur.Enabled = false;
+            rdbDeeltijds.Enabled = true;
+        }
+
+        private void rdbDeeltijds_CheckedChanged(object sender, EventArgs e)
+        {
+            numUur.Value = 0;
+            numUur.Enabled = true;
+            rdbVoltijds.Enabled = true;
+
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            rdbVoltijds.Enabled = true;
+            rdbDeeltijds.Enabled = true;
+            numUur.Value = 1;
         }
     }
 }
