@@ -83,7 +83,6 @@ namespace ProjectMaandelijkseLonen
                     loonMetAncEnSoc *= 1.01;
                 }
                 loonMetAncEnSoc += SixExtra;
-                //loonMetAncEnSoc -= 200;
                 return Math.Round(loonMetAncEnSoc, 2);
             }
             else
@@ -91,7 +90,6 @@ namespace ProjectMaandelijkseLonen
             {
                 loonMetAncEnSoc *= 1.01;
             }
-            //loonMetAncEnSoc -= 200;
             return Math.Round(loonMetAncEnSoc, 2);
 
         }

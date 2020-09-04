@@ -91,9 +91,19 @@ namespace ProjectMaandelijkseLonen
                     writer.WriteLine(new string('-', 50));
                     writer.WriteLine($"Startloon\t\t\t\t\t:   $ {(werknemers as Werknemers).StartMoney()}");
                     writer.WriteLine($"Ancienniteit\t\t\t\t: + $ {Math.Round((werknemers as Werknemers).GeneretAncientSocial() -(werknemers as Werknemers).StartMoney(),2)}");
-                    writer.WriteLine($"\t\t\t\t\t\t\t\t$ {(werknemers as Werknemers).GeneretAncientSocial()}");
-                    writer.WriteLine($"Social Zekerheid\t\t\t\t: - $ {(werknemers as Werknemers).SocialZekeheid()}");
-                    writer.WriteLine($"Bedrijfsvoorheffing\t\t\t: - ")
+                    writer.WriteLine($"\t\t\t\t\t\t    $ {(werknemers as Werknemers).GeneretAncientSocial()}");
+                    writer.WriteLine($"Social Zekerheid\t\t\t\t: - $ 200");
+                    writer.WriteLine($"\t\t\t\t\t\t    $ {(werknemers as Werknemers).SocialZekeheid()}");
+                    writer.Write($"Bedrijfsvoorheffing\t\t\t: - $ ");
+                    if ((werknemers as Werknemers).BedrijfWagen == true)
+                    {
+                        writer.WriteLine($"{Math.Round((werknemers as Werknemers).SocialZekeheid() * 0.1730),2}");
+                    }
+                    else
+                    {
+                        writer.WriteLine($"{Math.Round((werknemers as Werknemers).SocialZekeheid() * 0.1368),2}");
+                    }
+                    //writer.WriteLine($"")
 
                 }
             }
