@@ -14,7 +14,6 @@ namespace ProjectMaandelijkseLonen
             InitializeComponent();
         }
         List<Werknemers> werknemersList = new List<Werknemers>();
-        //Werknemers getWerk = new Werknemers();
         private void Form1_Load(object sender, EventArgs e)
         {
             Werknemers antal = new Werknemers("Antal Palfi", "Man", new DateTime(2018, 06, 13), "Be 1235 1532 1654", new DateTime(1990, 06, 16), "164598-184-16", 1900, work: Werknemers.Funkcie.Standaardwerker, 30, conractType: Werknemers.ConractType.Deeltijds);

@@ -18,12 +18,7 @@ namespace ProjectMaandelijkseLonen
             cmbFunkcie.Items.Add(Werknemers.Funkcie.Support);
             cmbFunkcie.Items.Add(Werknemers.Funkcie.ITsupport);
             cmbFunkcie.Items.Add(Werknemers.Funkcie.Customersupport);
-            //cmbContract.Items.Add(Werknemers.ConractType.Voltijds);
-            //cmbContract.Items.Add(Werknemers.ConractType.Deeltijds);
-
-
-
-
+           
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -225,34 +220,16 @@ namespace ProjectMaandelijkseLonen
                 default:
                     break;
             }
-
-            //if (txtNaam.Text == "" || txtrijkreg.Text == "" || txtIban.Text == "")
-            //{
-            //    MessageBox.Show("Uups. Something Missin!! Please fill in all fields");
-            //}
-            //else if (DateTime.Now.Year - dateTimeGebort.Value.Year < 18)
-            //{
-            //    MessageBox.Show("Sorry. Under age of 18 cannot work");
-            //}
-            //else if (rdbMan.Checked != true && rdbVrouw.Checked != true)
-            //{
-            //    MessageBox.Show("Geslacht niet correct");
-            //}
-            //else if (cmbFunkcie.DataSource == null)
-            //{
-            //    MessageBox.Show("Funkcie nog niet geselecteerd");
-            //}
-            //else if (numUur.Value == 0)
-            //{
-            //    MessageBox.Show("Aantal gepresteerde uren niet duidelijk");
-            //}
-
+            if (cmbFunkcie.SelectedItem==null)
+            {
+                Error();
+            }
         }
         private  void Error()
         {
             if (txtNaam.Text == "" || txtrijkreg.Text == "" || txtIban.Text == "")
             {
-                MessageBox.Show("Uups. Something Missin!! Please fill in all fields");
+                MessageBox.Show("Uups. Something Missing!! Please fill in all fields");
             }
             else if (DateTime.Now.Year - dateTimeGebort.Value.Year < 18)
             {
@@ -262,10 +239,10 @@ namespace ProjectMaandelijkseLonen
             {
                 MessageBox.Show("Geslacht niet correct");
             }
-            //else if (cmbFunkcie.DataSource == null)
-            //{
-            //    MessageBox.Show("Funkcie nog niet geselecteerd");
-            //}
+            else if (cmbFunkcie.SelectedItem== null)
+            {
+                MessageBox.Show("Funkcie nog niet geselecteerd");
+            }
             else if (numUur.Value == 0)
             {
                 MessageBox.Show("Aantal gepresteerde uren niet duidelijk");
@@ -273,11 +250,12 @@ namespace ProjectMaandelijkseLonen
             else
             {
                 MessageBox.Show("Proficiat");
+                DialogResult = DialogResult.OK;
             }
         }
         private void CheckAlles()
         {
-            if (txtNaam.Text != "" && txtIban.Text != "" && txtIban.Text != "" && rdbMan.Checked == true && rdbVrouw.Checked == true && numUur.Value != 0 && DateTime.Now.Year - dateTimeGebort.Value.Year >= 18)
+            if (txtNaam.Text != "" && txtIban.Text != "" && txtIban.Text != "" && rdbMan.Checked == true && rdbVrouw.Checked == true && numUur.Value != 0 && DateTime.Now.Year - dateTimeGebort.Value.Year >= 18&& cmbFunkcie.SelectedItem != null)
             {
                 DialogResult = DialogResult.OK;
             }
@@ -285,7 +263,6 @@ namespace ProjectMaandelijkseLonen
             {
                 Error();
             }
-            DialogResult = DialogResult.OK;
         }
 
         private void cmbFunkcie_SelectedIndexChanged(object sender, EventArgs e)

@@ -19,9 +19,6 @@ namespace ProjectMaandelijkseLonen
         public double Netto { get; set; }
         public string Geslagh { get; set; }
         public double SixExtra { get; set; }
-        
-
-       
         public enum Funkcie
         {
             Standaardwerker,Programmeur,Support,ITsupport,Customersupport
@@ -36,7 +33,6 @@ namespace ProjectMaandelijkseLonen
         {
 
         }
-       
         public Werknemers(string naam, string geslacht,DateTime startTime,string iban,DateTime geboortDatum,string rijksRegNum,double startloon = 1900,Funkcie work = Funkcie.Standaardwerker, double uuren = 38, ConractType conractType = ConractType.Voltijds,bool bedrijfWagen =false)
         {
             Naam = naam;
@@ -51,7 +47,6 @@ namespace ProjectMaandelijkseLonen
             TypeOfContract = conractType;
             Work = work;
             Netto = NettoLoon();
-            //TimeSpan different = DateTime.Now - startTime;
         }
         public double StartMoney()
         {
@@ -73,7 +68,6 @@ namespace ProjectMaandelijkseLonen
         }
         public double GeneretAncientSocial()
         {
-           
             int dientsJaar = DateTime.Now.Year - StartTime.Year;
             double loonMetAncEnSoc = StartMoney();
             if (Work.ToString() == "ITsupport")
@@ -91,15 +85,12 @@ namespace ProjectMaandelijkseLonen
                 loonMetAncEnSoc *= 1.01;
             }
             return Math.Round(loonMetAncEnSoc, 2);
-
         }
         public double SocialZekeheid()
         {
             double loonMetAc = GeneretAncientSocial();
             double loonMetSocZek = loonMetAc - 200;
             return Math.Round(loonMetSocZek,2);
-
-
         }
         public double NettoLoon()
         {
