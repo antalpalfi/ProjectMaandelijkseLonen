@@ -53,7 +53,7 @@ namespace ProjectMaandelijkseLonen
             Netto = NettoLoon();
             //TimeSpan different = DateTime.Now - startTime;
         }
-        private double StartMoney()
+        public double StartMoney()
         {
             double sixExtra;
             double StartMoney;
@@ -83,7 +83,7 @@ namespace ProjectMaandelijkseLonen
                     loonMetAncEnSoc *= 1.01;
                 }
                 loonMetAncEnSoc += SixExtra;
-                loonMetAncEnSoc -= 200;
+                //loonMetAncEnSoc -= 200;
                 return Math.Round(loonMetAncEnSoc, 2);
             }
             else
@@ -91,8 +91,16 @@ namespace ProjectMaandelijkseLonen
             {
                 loonMetAncEnSoc *= 1.01;
             }
-            loonMetAncEnSoc -= 200;
+            //loonMetAncEnSoc -= 200;
             return Math.Round(loonMetAncEnSoc, 2);
+
+        }
+        public double SocialZekeheid()
+        {
+            double loonMetAc = GeneretAncientSocial();
+            double loonMetSocZek = loonMetAc - 200;
+            return Math.Round(loonMetSocZek,2);
+
 
         }
         public double NettoLoon()
@@ -101,25 +109,25 @@ namespace ProjectMaandelijkseLonen
             double netto;
             if (BedrijfWagen==true)
             {
-                money = GeneretAncientSocial();
+                money = SocialZekeheid();
                 netto = money - (money * 0.1730);
                 return Math.Round(netto, 2);
             }
             else if (Work.ToString() == "Support")
             {
-                money = GeneretAncientSocial();
+                money = SocialZekeheid();
                 netto = money - (money * 0.1368) + 50;
                 return Math.Round(netto, 2);
             }
             else if (Work.ToString() == "Customersupport")
             {
-                money = GeneretAncientSocial();
+                money = SocialZekeheid();
                 netto = money - (money * 0.1368) +19.50;
                 return Math.Round(netto, 2);
             }
             else
             {
-                money = GeneretAncientSocial();
+                money = SocialZekeheid();
                 netto = money - (money * 0.1368);
                 return Math.Round(netto, 2);
             }
