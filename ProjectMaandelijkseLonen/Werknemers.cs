@@ -19,6 +19,7 @@ namespace ProjectMaandelijkseLonen
         public double Netto { get; set; }
         public string Geslagh { get; set; }
         public double SixExtra { get; set; }
+        
 
        
         public enum Funkcie
@@ -72,6 +73,7 @@ namespace ProjectMaandelijkseLonen
         }
         public double GeneretAncientSocial()
         {
+           
             int dientsJaar = DateTime.Now.Year - StartTime.Year;
             double loonMetAncEnSoc = StartMoney();
             if (Work.ToString() == "ITsupport")

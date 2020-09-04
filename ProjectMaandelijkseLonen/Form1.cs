@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace ProjectMaandelijkseLonen
@@ -20,25 +15,22 @@ namespace ProjectMaandelijkseLonen
         //Werknemers getWerk = new Werknemers();
         private void Form1_Load(object sender, EventArgs e)
         {
-            Werknemers antal = new Werknemers("Antal Palfi","Man", new DateTime(2018,06,13), "Be 1235 1532 1654", new DateTime(1990,06,16), "164598-184-16-06-1990",1900,work: Werknemers.Funkcie.Standaardwerker, 38, conractType: Werknemers.ConractType.Deeltijds);
+            Werknemers antal = new Werknemers("Antal Palfi", "Man", new DateTime(2018, 06, 13), "Be 1235 1532 1654", new DateTime(1990, 06, 16), "164598-184-16", 1900, work: Werknemers.Funkcie.Standaardwerker, 38, conractType: Werknemers.ConractType.Deeltijds);
             werknemersList.Add(antal);
-            Werknemers tomi = new Werknemers("Tomi Palfi","Man" ,new DateTime(2015, 06, 13), "Be 1235 1532 1654", new DateTime(1995, 07, 26), "168898-184-26-07-1995",2200,work:Werknemers.Funkcie.Programmeur ,38, conractType: Werknemers.ConractType.Voltijds,true);
+            Werknemers tomi = new Werknemers("Tomi Palfi", "Man", new DateTime(2015, 06, 13), "Be 1235 1532 1654", new DateTime(1995, 07, 26), "168898-184-26", 2200, work: Werknemers.Funkcie.Programmeur, 38, conractType: Werknemers.ConractType.Voltijds, true);
             werknemersList.Add(tomi);
-            Werknemers eszti = new Werknemers("Eszter Boer", "Vrouw", new DateTime(2008, 01, 23), "NL 1235 1532 7854", new DateTime(1978, 04, 11), "168898-184-11-04-1978", 2050, work: Werknemers.Funkcie.Support, 38, conractType: Werknemers.ConractType.Voltijds);
+            Werknemers eszti = new Werknemers("Eszter Boer", "Vrouw", new DateTime(2008, 01, 23), "NL 1235 1532 7854", new DateTime(1978, 04, 11), "168898-184-11", 2050, work: Werknemers.Funkcie.Support, 38, conractType: Werknemers.ConractType.Voltijds);
             werknemersList.Add(eszti);
-            Werknemers kriszti = new Werknemers("Krisztina Vigh", "Vrouw", new DateTime(2010, 01, 23), "NL 6535 15892 7854", new DateTime(1985, 04, 18), "174898-184-18-04-1985", 2050, work: Werknemers.Funkcie.ITsupport, 38, conractType: Werknemers.ConractType.Voltijds);
+            Werknemers kriszti = new Werknemers("Krisztina Vigh", "Vrouw", new DateTime(2010, 01, 23), "NL 6535 15892 7854", new DateTime(1985, 04, 18), "174898-184-18", 2050, work: Werknemers.Funkcie.ITsupport, 38, conractType: Werknemers.ConractType.Voltijds);
             werknemersList.Add(kriszti);
             listBox1.DataSource = null;
             listBox1.DataSource = werknemersList;
-            //label1.Text = getWerk.WerknemInfo();
-            //getWerk.NettoLoon(); 
-            
 
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listBox1.DataSource!=null)
+            if (listBox1.DataSource != null)
             {
                 label1.Text = (listBox1.SelectedItem as Werknemers).WerknemInfo();
             }
@@ -50,17 +42,17 @@ namespace ProjectMaandelijkseLonen
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-           
-                werknemersList.RemoveAt(listBox1.SelectedIndex);
-                listBox1.Items.Remove(listBox1.SelectedIndex);
-                listBox1.DataSource = null;
-                listBox1.DataSource = werknemersList;
+
+            werknemersList.RemoveAt(listBox1.SelectedIndex);
+            listBox1.Items.Remove(listBox1.SelectedIndex);
+            listBox1.DataSource = null;
+            listBox1.DataSource = werknemersList;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             AddWerknemer addWerknemer = new AddWerknemer();
-            if (addWerknemer.ShowDialog()== DialogResult.OK)
+            if (addWerknemer.ShowDialog() == DialogResult.OK)
             {
                 werknemersList.Add(addWerknemer.newWerknemer);
                 listBox1.DataSource = null;
@@ -70,7 +62,35 @@ namespace ProjectMaandelijkseLonen
 
         private void lbLoonbrief_Click(object sender, EventArgs e)
         {
+            if (listBox1.SelectedItem != null)
+            {
+                Werknemers werknemers = (listBox1.SelectedItem as Werknemers);
+                using (StreamWriter writer = new StreamWriter(werknemers.Naam))
+                {
+                    writer.WriteLine($"Loonbrief {werknemers.Naam} {werknemers.RijkRegNum} {DateTime.Now.ToString("MMMM-yyyy").ToUpper()}");
+                    writer.WriteLine(new string('-', 50));
+                    writer.WriteLine($"Naam\t\t\t\t\t\t: {werknemers.Naam}");
+                    writer.WriteLine($"Rijksregisternummer\t\t\t: {werknemers.RijkRegNum}");
+                    writer.WriteLine($"Geboortedatum\t\t\t\t: {werknemers.GeboortDatum.ToString("dd-MMMM-yyyy")}");
+                    writer.WriteLine($"Datum Indiensttreding\t\t\t: {werknemers.StartTime.ToString("dd-MMMM-yyyy")}");
+                    writer.WriteLine($"Funkcie\t\t\t\t\t: {werknemers.Work}");
+                    writer.WriteLine($"Aantal Gepresteerde Uren\t\t: {werknemers.Uuren}/38");
 
+                    writer.Write($"Bedrijfwagen\t\t\t\t: ");
+                    if ((werknemers as Werknemers).BedrijfWagen == true)
+                    {
+                        writer.WriteLine("Ja");
+                    }
+                    else
+                    {
+                        writer.WriteLine("No");
+                    }
+                    writer.WriteLine(new string('-', 50));
+                    writer.WriteLine($"Startloon\t\t\t\t\t:   $ {werknemers.Startloon}");
+                    //writer.WriteLine($"Ancienniteit\t\t\t\t : + $ {")
+
+                }
+            }
         }
     }
 }
