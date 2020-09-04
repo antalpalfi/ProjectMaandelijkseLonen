@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace ProjectMaandelijkseLonen
@@ -37,17 +35,24 @@ namespace ProjectMaandelijkseLonen
             }
             else
             {
-                label1.Text = "";
+                label1.Text = "We don't have any workers";
             }
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-
+            listBox1.Focus();
+            listBox1.SelectedIndex = 0;
             werknemersList.RemoveAt(listBox1.SelectedIndex);
             listBox1.Items.Remove(listBox1.SelectedIndex);
             listBox1.DataSource = null;
             listBox1.DataSource = werknemersList;
+            listBox1.Focus();
+            if (werknemersList.Count ==0)
+            {
+                MessageBox.Show("We don't have any workers");
+                btnRemove.Enabled = false;
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -89,7 +94,7 @@ namespace ProjectMaandelijkseLonen
                     }
                     writer.WriteLine(new string('-', 50));
                     writer.WriteLine($"Startloon\t\t\t\t\t:   $ {(werknemers as Werknemers).StartMoney()}");
-                    writer.WriteLine($"Ancienniteit\t\t\t\t: + $ {Math.Round((werknemers as Werknemers).GeneretAncientSocial() -(werknemers as Werknemers).StartMoney(),2)}");
+                    writer.WriteLine($"Ancienniteit\t\t\t\t: + $ {Math.Round((werknemers as Werknemers).GeneretAncientSocial() - (werknemers as Werknemers).StartMoney(), 2)}");
                     writer.WriteLine($"\t\t\t\t\t\t    $ {(werknemers as Werknemers).GeneretAncientSocial()}");
                     writer.WriteLine($"Social Zekerheid\t\t\t\t: - $ 200");
                     writer.WriteLine($"\t\t\t\t\t\t    $ {(werknemers as Werknemers).SocialZekeheid()}");
@@ -122,7 +127,7 @@ namespace ProjectMaandelijkseLonen
                         writer.WriteLine($"\t\t\t\t\t\t    $ {(werknemers as Werknemers).NettoLoon()}");
                         writer.WriteLine($"Nettoloon\t\t\t\t\t:   $ {(werknemers as Werknemers).NettoLoon()}");
                     }
-                    writer.WriteLine(new string('-',50));
+                    writer.WriteLine(new string('-', 50));
 
                 }
             }
