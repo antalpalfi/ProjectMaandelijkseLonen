@@ -17,7 +17,7 @@ namespace ProjectMaandelijkseLonen
         //Werknemers getWerk = new Werknemers();
         private void Form1_Load(object sender, EventArgs e)
         {
-            Werknemers antal = new Werknemers("Antal Palfi", "Man", new DateTime(2018, 06, 13), "Be 1235 1532 1654", new DateTime(1990, 06, 16), "164598-184-16", 1900, work: Werknemers.Funkcie.Standaardwerker, 38, conractType: Werknemers.ConractType.Deeltijds);
+            Werknemers antal = new Werknemers("Antal Palfi", "Man", new DateTime(2018, 06, 13), "Be 1235 1532 1654", new DateTime(1990, 06, 16), "164598-184-16", 1900, work: Werknemers.Funkcie.Standaardwerker, 30, conractType: Werknemers.ConractType.Deeltijds);
             werknemersList.Add(antal);
             Werknemers tomi = new Werknemers("Tomi Palfi", "Man", new DateTime(2018, 06, 13), "Be 1235 1532 1654", new DateTime(1995, 07, 26), "168898-184-26", 2200, work: Werknemers.Funkcie.Programmeur, 38, conractType: Werknemers.ConractType.Voltijds, true);
             werknemersList.Add(tomi);
@@ -103,7 +103,27 @@ namespace ProjectMaandelijkseLonen
                     {
                         writer.WriteLine($"{Math.Round((werknemers as Werknemers).SocialZekeheid() * 0.1368),2}");
                     }
-                    //writer.WriteLine($"")
+                    if (werknemers.Work.ToString() == "Support")
+                    {
+                        writer.WriteLine($"\t\t\t\t\t\t    $ {(werknemers as Werknemers).NettoLoon() - 50}");
+                        writer.WriteLine($"Thuis werk extra\t\t\t\t: + $ 50");
+                        writer.WriteLine($"\t\t\t\t\t\t    $ {(werknemers as Werknemers).NettoLoon()}");
+                        writer.WriteLine($"Nettoloon\t\t\t\t\t:   $ {(werknemers as Werknemers).NettoLoon()}");
+
+                    }
+                    else if (werknemers.Work.ToString() == "Customersupport")
+                    {
+                        writer.WriteLine($"\t\t\t\t\t\t    $ {(werknemers as Werknemers).NettoLoon() - 19.50}");
+                        writer.WriteLine($"Opleiding\t\t\t\t\t: + $ 19.50");
+                        writer.WriteLine($"\t\t\t\t\t\t    $ {(werknemers as Werknemers).NettoLoon()}");
+                        writer.WriteLine($"Nettoloon\t\t\t\t\t:    $ {(werknemers as Werknemers).NettoLoon()}");
+                    }
+                    else
+                    {
+                        writer.WriteLine($"\t\t\t\t\t\t    $ {(werknemers as Werknemers).NettoLoon()}");
+                        writer.WriteLine($"Nettoloon\t\t\t\t\t:   $ {(werknemers as Werknemers).NettoLoon()}");
+                    }
+                    writer.WriteLine(new string('-',50));
 
                 }
             }

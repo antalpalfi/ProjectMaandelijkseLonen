@@ -14,7 +14,7 @@ namespace ProjectMaandelijkseLonen
         public DateTime GeboortDatum { get; set; }
         public string RijkRegNum { get; set; }
         public double Startloon { get; set; }
-        public int Uuren { get; set; }
+        public double Uuren { get; set; }
         public bool BedrijfWagen { get; set; }
         public double Netto { get; set; }
         public string Geslagh { get; set; }
@@ -37,7 +37,7 @@ namespace ProjectMaandelijkseLonen
 
         }
        
-        public Werknemers(string naam, string geslacht,DateTime startTime,string iban,DateTime geboortDatum,string rijksRegNum,double startloon = 1900,Funkcie work = Funkcie.Standaardwerker, int uuren = 38, ConractType conractType = ConractType.Voltijds,bool bedrijfWagen =false)
+        public Werknemers(string naam, string geslacht,DateTime startTime,string iban,DateTime geboortDatum,string rijksRegNum,double startloon = 1900,Funkcie work = Funkcie.Standaardwerker, double uuren = 38, ConractType conractType = ConractType.Voltijds,bool bedrijfWagen =false)
         {
             Naam = naam;
             Geslagh = geslacht;

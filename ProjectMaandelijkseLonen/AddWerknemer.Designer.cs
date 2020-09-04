@@ -41,8 +41,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.dateTimeGebort = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rdbMan = new System.Windows.Forms.RadioButton();
             this.rdbVrouw = new System.Windows.Forms.RadioButton();
+            this.rdbMan = new System.Windows.Forms.RadioButton();
             this.dateTimeStartDatum = new System.Windows.Forms.DateTimePicker();
             this.numUur = new System.Windows.Forms.NumericUpDown();
             this.cmbFunkcie = new System.Windows.Forms.ComboBox();
@@ -59,8 +59,8 @@
             this.IbibanNummer = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBoxContract = new System.Windows.Forms.GroupBox();
-            this.rdbVoltijds = new System.Windows.Forms.RadioButton();
             this.rdbDeeltijds = new System.Windows.Forms.RadioButton();
+            this.rdbVoltijds = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUur)).BeginInit();
             this.groupBoxWagen.SuspendLayout();
@@ -180,17 +180,6 @@
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             // 
-            // rdbMan
-            // 
-            this.rdbMan.AutoSize = true;
-            this.rdbMan.Location = new System.Drawing.Point(3, 7);
-            this.rdbMan.Name = "rdbMan";
-            this.rdbMan.Size = new System.Drawing.Size(46, 17);
-            this.rdbMan.TabIndex = 0;
-            this.rdbMan.TabStop = true;
-            this.rdbMan.Text = "Man";
-            this.rdbMan.UseVisualStyleBackColor = true;
-            // 
             // rdbVrouw
             // 
             this.rdbVrouw.AutoSize = true;
@@ -201,6 +190,17 @@
             this.rdbVrouw.TabStop = true;
             this.rdbVrouw.Text = "Vrouw";
             this.rdbVrouw.UseVisualStyleBackColor = true;
+            // 
+            // rdbMan
+            // 
+            this.rdbMan.AutoSize = true;
+            this.rdbMan.Location = new System.Drawing.Point(3, 7);
+            this.rdbMan.Name = "rdbMan";
+            this.rdbMan.Size = new System.Drawing.Size(46, 17);
+            this.rdbMan.TabIndex = 0;
+            this.rdbMan.TabStop = true;
+            this.rdbMan.Text = "Man";
+            this.rdbMan.UseVisualStyleBackColor = true;
             // 
             // dateTimeStartDatum
             // 
@@ -221,6 +221,7 @@
             this.numUur.Name = "numUur";
             this.numUur.Size = new System.Drawing.Size(64, 20);
             this.numUur.TabIndex = 15;
+            this.numUur.ValueChanged += new System.EventHandler(this.numUur_ValueChanged);
             // 
             // cmbFunkcie
             // 
@@ -356,17 +357,6 @@
             this.groupBoxContract.TabIndex = 27;
             this.groupBoxContract.TabStop = false;
             // 
-            // rdbVoltijds
-            // 
-            this.rdbVoltijds.AutoSize = true;
-            this.rdbVoltijds.Location = new System.Drawing.Point(3, 16);
-            this.rdbVoltijds.Name = "rdbVoltijds";
-            this.rdbVoltijds.Size = new System.Drawing.Size(58, 17);
-            this.rdbVoltijds.TabIndex = 0;
-            this.rdbVoltijds.TabStop = true;
-            this.rdbVoltijds.Text = "Voltijds";
-            this.rdbVoltijds.UseVisualStyleBackColor = true;
-            // 
             // rdbDeeltijds
             // 
             this.rdbDeeltijds.AutoSize = true;
@@ -377,6 +367,17 @@
             this.rdbDeeltijds.TabStop = true;
             this.rdbDeeltijds.Text = "Deeltijds";
             this.rdbDeeltijds.UseVisualStyleBackColor = true;
+            // 
+            // rdbVoltijds
+            // 
+            this.rdbVoltijds.AutoSize = true;
+            this.rdbVoltijds.Location = new System.Drawing.Point(3, 16);
+            this.rdbVoltijds.Name = "rdbVoltijds";
+            this.rdbVoltijds.Size = new System.Drawing.Size(58, 17);
+            this.rdbVoltijds.TabIndex = 0;
+            this.rdbVoltijds.TabStop = true;
+            this.rdbVoltijds.Text = "Voltijds";
+            this.rdbVoltijds.UseVisualStyleBackColor = true;
             // 
             // AddWerknemer
             // 

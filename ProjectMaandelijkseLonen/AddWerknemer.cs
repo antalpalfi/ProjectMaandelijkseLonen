@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProjectMaandelijkseLonen
@@ -21,13 +13,14 @@ namespace ProjectMaandelijkseLonen
 
         private void AddWerknemer_Load(object sender, EventArgs e)
         {
-            cmbFunkcie.Items.Add( Werknemers.Funkcie.Standaardwerker);
+            cmbFunkcie.Items.Add(Werknemers.Funkcie.Standaardwerker);
             cmbFunkcie.Items.Add(Werknemers.Funkcie.Programmeur);
             cmbFunkcie.Items.Add(Werknemers.Funkcie.Support);
             cmbFunkcie.Items.Add(Werknemers.Funkcie.ITsupport);
             cmbFunkcie.Items.Add(Werknemers.Funkcie.Customersupport);
             //cmbContract.Items.Add(Werknemers.ConractType.Voltijds);
             //cmbContract.Items.Add(Werknemers.ConractType.Deeltijds);
+
 
 
 
@@ -40,6 +33,7 @@ namespace ProjectMaandelijkseLonen
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+
             switch (cmbFunkcie.SelectedItem)
             {
                 case Werknemers.Funkcie.Standaardwerker:
@@ -70,12 +64,11 @@ namespace ProjectMaandelijkseLonen
                     newWerknemer.Iban = txtIban.Text;
                     newWerknemer.StartTime = dateTimeStartDatum.Value;
                     newWerknemer.Work = Werknemers.Funkcie.Standaardwerker;
-                    newWerknemer.Uuren = (int)numUur.Value;
+                    newWerknemer.Uuren = (double)numUur.Value;
                     newWerknemer.Startloon = 1900;
                     newWerknemer.BedrijfWagen = false;
-                    //newWerknemer.TypeOfContract = (cmbContract.SelectedItem as Werknemers.ConractType;
                     newWerknemer.Netto = newWerknemer.NettoLoon();
-                    DialogResult = DialogResult.OK;
+                    CheckAlles();
                     break;
                 case Werknemers.Funkcie.Programmeur:
                     if (rdbMan.Checked && rdbJa.Checked && rdbVoltijds.Checked)
@@ -107,7 +100,7 @@ namespace ProjectMaandelijkseLonen
                     else if (rdbVrouw.Checked && rdbJa.Checked && rdbVoltijds.Checked)
                     {
                         newWerknemer.Geslagh = "Vrouw";
-                        newWerknemer.BedrijfWagen = true; 
+                        newWerknemer.BedrijfWagen = true;
                         newWerknemer.TypeOfContract = Werknemers.ConractType.Voltijds;
                     }
                     else if (rdbVrouw.Checked && rdbJa.Checked && rdbDeeltijds.Checked)
@@ -134,10 +127,10 @@ namespace ProjectMaandelijkseLonen
                     newWerknemer.Iban = txtIban.Text;
                     newWerknemer.StartTime = dateTimeStartDatum.Value;
                     newWerknemer.Work = Werknemers.Funkcie.Programmeur;
-                    newWerknemer.Uuren = (int)numUur.Value;
+                    newWerknemer.Uuren = (double)numUur.Value;
                     newWerknemer.Startloon = 2200;
                     newWerknemer.Netto = newWerknemer.NettoLoon();
-                    DialogResult = DialogResult.OK;
+                    CheckAlles();
                     break;
                 case Werknemers.Funkcie.Support:
                     if (rdbMan.Checked && rdbVoltijds.Checked)
@@ -167,11 +160,11 @@ namespace ProjectMaandelijkseLonen
                     newWerknemer.Iban = txtIban.Text;
                     newWerknemer.StartTime = dateTimeStartDatum.Value;
                     newWerknemer.Work = Werknemers.Funkcie.Support;
-                    newWerknemer.Uuren = (int)numUur.Value;
+                    newWerknemer.Uuren = (double)numUur.Value;
                     newWerknemer.Startloon = 2050;
                     newWerknemer.BedrijfWagen = false;
                     newWerknemer.Netto = newWerknemer.NettoLoon();
-                    DialogResult = DialogResult.OK;
+                    CheckAlles();
                     break;
                 case Werknemers.Funkcie.ITsupport:
                     if (rdbMan.Checked)
@@ -193,7 +186,7 @@ namespace ProjectMaandelijkseLonen
                     newWerknemer.BedrijfWagen = false;
                     newWerknemer.TypeOfContract = Werknemers.ConractType.Voltijds;
                     newWerknemer.Netto = newWerknemer.NettoLoon();
-                    DialogResult = DialogResult.OK;
+                    CheckAlles();
                     break;
                 case Werknemers.Funkcie.Customersupport:
                     if (rdbMan.Checked && rdbVoltijds.Checked)
@@ -223,16 +216,76 @@ namespace ProjectMaandelijkseLonen
                     newWerknemer.Iban = txtIban.Text;
                     newWerknemer.StartTime = dateTimeStartDatum.Value;
                     newWerknemer.Work = Werknemers.Funkcie.Customersupport;
-                    newWerknemer.Uuren = (int)numUur.Value;
+                    newWerknemer.Uuren = (double)numUur.Value;
                     newWerknemer.Startloon = 2050;
                     newWerknemer.BedrijfWagen = false;
                     newWerknemer.Netto = newWerknemer.NettoLoon();
-                    DialogResult = DialogResult.OK;
+                    CheckAlles();
                     break;
                 default:
                     break;
             }
-           
+
+            //if (txtNaam.Text == "" || txtrijkreg.Text == "" || txtIban.Text == "")
+            //{
+            //    MessageBox.Show("Uups. Something Missin!! Please fill in all fields");
+            //}
+            //else if (DateTime.Now.Year - dateTimeGebort.Value.Year < 18)
+            //{
+            //    MessageBox.Show("Sorry. Under age of 18 cannot work");
+            //}
+            //else if (rdbMan.Checked != true && rdbVrouw.Checked != true)
+            //{
+            //    MessageBox.Show("Geslacht niet correct");
+            //}
+            //else if (cmbFunkcie.DataSource == null)
+            //{
+            //    MessageBox.Show("Funkcie nog niet geselecteerd");
+            //}
+            //else if (numUur.Value == 0)
+            //{
+            //    MessageBox.Show("Aantal gepresteerde uren niet duidelijk");
+            //}
+
+        }
+        private  void Error()
+        {
+            if (txtNaam.Text == "" || txtrijkreg.Text == "" || txtIban.Text == "")
+            {
+                MessageBox.Show("Uups. Something Missin!! Please fill in all fields");
+            }
+            else if (DateTime.Now.Year - dateTimeGebort.Value.Year < 18)
+            {
+                MessageBox.Show("Sorry. Under age of 18 cannot work");
+            }
+            else if (rdbMan.Checked != true && rdbVrouw.Checked != true)
+            {
+                MessageBox.Show("Geslacht niet correct");
+            }
+            //else if (cmbFunkcie.DataSource == null)
+            //{
+            //    MessageBox.Show("Funkcie nog niet geselecteerd");
+            //}
+            else if (numUur.Value == 0)
+            {
+                MessageBox.Show("Aantal gepresteerde uren niet duidelijk");
+            }
+            else
+            {
+                MessageBox.Show("Proficiat");
+            }
+        }
+        private void CheckAlles()
+        {
+            if (txtNaam.Text != "" && txtIban.Text != "" && txtIban.Text != "" && rdbMan.Checked == true && rdbVrouw.Checked == true && numUur.Value != 0 && DateTime.Now.Year - dateTimeGebort.Value.Year >= 18)
+            {
+                DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                Error();
+            }
+            DialogResult = DialogResult.OK;
         }
 
         private void cmbFunkcie_SelectedIndexChanged(object sender, EventArgs e)
@@ -281,7 +334,7 @@ namespace ProjectMaandelijkseLonen
                     rdbDeeltijds.Enabled = false;
                     rdbVoltijds.Enabled = false;
                     rdbVoltijds.Checked = true;
-                    
+
                     break;
                 case Werknemers.Funkcie.Customersupport:
                     labelStartLoon.Text = "2050$";
@@ -296,6 +349,24 @@ namespace ProjectMaandelijkseLonen
                     break;
                 default:
                     break;
+            }
+        }
+
+        private void numUur_ValueChanged(object sender, EventArgs e)
+        {
+            if (numUur.Value < 38)
+            {
+                rdbVoltijds.Enabled = false;
+                rdbVoltijds.Checked = false;
+                rdbDeeltijds.Enabled = true;
+                rdbDeeltijds.Checked = true;
+            }
+            else
+            {
+                rdbVoltijds.Enabled = true;
+                rdbDeeltijds.Checked = false;
+                rdbVoltijds.Checked = true;
+                rdbDeeltijds.Enabled = false;
             }
         }
     }
